@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmic Clicker</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+<div id="game">
+  <div id="stardustDisplay">Stardust: 0</div>
+  <button id="clickButton">✨ Click ✨</button>
+  <div id="producers"><h3>Producers</h3></div>
+  <div id="upgrades"><h3>Upgrades</h3></div>
+  <button onclick="UI.openSettings()">⚙️ Settings</button>
+  <button onclick="UI.openRebirth()">🌌 Rebirth</button>
+</div>
+
+<div id="settings">
+  <h2>Settings</h2>
+  <label>Click Sound <input type="checkbox" id="clickSoundToggle" checked></label>
+  <label>Event Sound <input type="checkbox" id="eventSoundToggle" checked></label>
+  <label>Purchase Sound <input type="checkbox" id="purchaseSoundToggle" checked></label>
+  <label>Background Anim <input type="checkbox" id="bgToggle" checked></label>
+  <button onclick="Settings.resetGame()">Reset Save</button>
+  <div class="closeBtn" onclick="UI.closeSettings()">Close</div>
+</div>
+
+<div id="rebirthModal">
+  <h2>Rebirth</h2>
+  <div id="rebirthInfo"></div>
+  <button onclick="Rebirth.confirmRebirth()">Confirm Rebirth</button>
+  <div class="closeBtn" onclick="UI.closeRebirth()">Close</div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/events.js"></script>
+<script src="js/rebirth.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+
