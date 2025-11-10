@@ -1,44 +1,58 @@
-import { Game } from './game.js';
-import { UI } from './ui.js';
-import { AudioManager } from './audio.js';
-import { Particles } from './particles.js';
+// events.js - floating space-only emoji events (module)
+const SPACE_EMOJIS = ['☄️','🚀','✨','💫','🌠','🛰️','🌟','🔭','🌌','🌙'];
 
-export const Events={
-  buyProducer(i){
-    const p=Game.state.producers[i];
-    const cost=Math.floor(p.baseCost*Math.pow(1.15,p.count));
-    if(Game.state.stardust>=cost){
-      Game.state.stardust-=cost;
-      p.count++;
-      AudioManager.play('purchase');
-      UI.updateStardust();
-      UI.renderProducers();
-    }
-  },
-
-  buyUpgrade(i){
-    const u=Game.state.upgrades[i];
-    const cost=Math.floor(u.baseCost*Math.pow(2,u.level));
-    if(Game.state.stardust>=cost){
-      Game.state.stardust-=cost;
-      u.level++;
-      if(u.type==="color") Game.gun.color=["#fff","#0ff","#f0f","#ff0","#f90"][u.level%5];
-      else if(u.type==="flat") Game.state.clickValue+=u.flat||0;
-      else if(u.type==="dps") Game.state.rebirthMultiplier*=u.multiplier;
-      AudioManager.play('purchase');
-      UI.updateStardust();
-      UI.renderUpgrades();
-    }
-  },
-
-  spendPerk(type){
-    if(Game.state.cosmicEssence>0){
-      Game.state.cosmicEssence--;
-      if(type==="click") Game.state.clickValue*=1.01;
-      else if(type==="dps") Game.state.producers.forEach(p=>p.baseDPS*=1.01);
-      else if(type==="stardust") Game.state.stardust+=100;
-      UI.updateStardust();
-      UI.updateRebirthMenu();
-    }
+export class FloatingEvent {
+  constructor(rootEl, onCollectCallback) {
+    this.rootEl = rootEl;
+    this.onCollect = onCollectCallback;
+    this.el = document.createElement('div');
+    this.el.className = 'flying-event';
+    this.emoji = SPACE_EMOJIS[Math.floor(Math.random()*SPACE_EMOJIS.length)];
+    this.el.textContent = this.emoji;
+    this.speed = Math.random()*40+30; // px/sec
+    this.direction = Math.random() < 0.5 ? 'left' : 'right';
+    this.y = Math.random() * (rootEl.clientHeight * 0.8) + rootEl.clientHeight*0.1;
+    this.start();
   }
-};
+
+  start() {
+    const container = this.rootEl;
+    container.appendChild(this.el);
+    this.el.style.top = `${this.y}px`;
+    if (this.direction === 'left') {
+      this.x = container.clientWidth + 40;
+      this.el.style.left = `${this.x}px`;
+    } else {
+      this.x = -60;
+      this.el.style.left = `${this.x}px`;
+    }
+    this.boundTick = this.tick.bind(this);
+    this.last = performance.now();
+    this.el.addEventListener('click', this.collect.bind(this));
+    requestAnimationFrame(this.boundTick);
+  }
+
+  tick(now) {
+    const dt = (now - this.last) / 1000;
+    this.last = now;
+    const delta = this.speed * dt * (this.direction === 'left' ? -1 : 1);
+    this.x += delta;
+    this.el.style.left = `${this.x}px`;
+    if (this.direction === 'left' && this.x < -80) { this.destroy(); return; }
+    if (this.direction === 'right' && this.x > this.rootEl.clientWidth + 80) { this.destroy(); return; }
+    this._raf = requestAnimationFrame(this.boundTick);
+  }
+
+  collect() {
+    this.el.style.transform = 'scale(1.4)';
+    setTimeout(()=> {
+      this.onCollect();
+      this.destroy();
+    }, 110);
+  }
+
+  destroy() {
+    cancelAnimationFrame(this._raf);
+    this.el.remove();
+  }
+}

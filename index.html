@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galaxy Grower 3.0</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Galaxy Grower 3.0</h1>
+      <div id="hud-small">
+        <div>🌌 <span id="stardust">0</span></div>
+        <div>✨ DPS <span id="dps">0</span></div>
+        <div>🔁 Click <span id="clickValue">1</span></div>
+      </div>
+      <div id="top-actions">
+        <button id="adBtn">📺 Watch Ad (5%)</button>
+        <button id="rebirthOpenBtn">♻️ Rebirth</button>
+        <button id="settingsOpenBtn">⚙️</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="click-area">
+        <div id="starfield"></div>
+        <button id="big-button" aria-label="Collect Stardust">✦</button>
+        <div id="click-note">Tap the core</div>
+        <div id="floating-events"></div>
+        <canvas id="particle-canvas"></canvas>
+      </section>
+
+      <aside id="shop">
+        <h2>Producers & Upgrades</h2>
+        <div id="upgrades"></div>
+
+        <h3>Click Upgrades</h3>
+        <div id="click-upgrades"></div>
+
+        <h3>Actions</h3>
+        <div class="actions">
+          <button id="saveBtn">Save</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Auto-saves every 30s · Click events are space-themed · Rebirths give Cosmic Essence
+    </footer>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-inner" id="settingsPane"></div>
+  </div>
+
+  <!-- Rebirth modal -->
+  <div id="rebirthModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-inner" id="rebirthPane"></div>
+  </div>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

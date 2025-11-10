@@ -1,6 +1,0 @@
-body { margin:0; font-family:sans-serif; background:#000; color:#fff; overflow:hidden; }
-#game-container { display:flex; height:100vh; }
-#gameCanvas { flex:1; background:#000; display:block; }
-#ui-panel { width:300px; padding:10px; background:#111; display:flex; flex-direction:column; gap:10px; }
-.rectBtn { width:100%; padding:10px; margin:5px 0; cursor:pointer; background:#222; color:#fff; border:2px solid #fff; border-radius:5px; }
-.item { margin:5px 0; }
