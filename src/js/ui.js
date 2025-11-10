@@ -1,4 +1,6 @@
-const UI = {
+import { Game } from './game.js';
+
+export const UI = {
   stardustDisplay: document.getElementById('stardustDisplay'),
   producersDiv: document.getElementById('producers'),
   upgradesDiv: document.getElementById('upgrades'),
@@ -16,7 +18,7 @@ const UI = {
       const cost = Math.floor(p.baseCost * Math.pow(1.15,p.count));
       const div = document.createElement('div');
       div.className='item';
-      div.innerHTML=`${p.name} - Owned: ${p.count} | Cost: ${cost} | DPS: ${p.baseDPS*p.count} <button onclick="Events.buyProducer(${i})">Buy</button>`;
+      div.innerHTML=`${p.name} - Owned: ${p.count} | Cost: ${cost} | DPS: ${p.baseDPS*p.count} <button onclick="import('./events.js').then(m=>m.Events.buyProducer(${i}))">Buy</button>`;
       this.producersDiv.appendChild(div);
     });
   },
@@ -27,7 +29,7 @@ const UI = {
       const cost = Math.floor(u.baseCost * Math.pow(2,u.level));
       const div = document.createElement('div');
       div.className='item';
-      div.innerHTML=`${u.name} - Level: ${u.level} | Cost: ${cost} <button onclick="Events.buyUpgrade(${i})">Buy</button>`;
+      div.innerHTML=`${u.name} - Level: ${u.level} | Cost: ${cost} <button onclick="import('./events.js').then(m=>m.Events.buyUpgrade(${i}))">Buy</button>`;
       this.upgradesDiv.appendChild(div);
     });
   },
@@ -39,4 +41,4 @@ const UI = {
     this.rebirthModal.style.display='flex';
   },
   closeRebirth(){ this.rebirthModal.style.display='none'; }
-}
+};

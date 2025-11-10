@@ -6,4 +6,3 @@ body { margin: 0; font-family: sans-serif; background: #000; color: #fff; overfl
 .item { margin: 5px 0; }
 .particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; pointer-events: none; }
 .floatingEvent { position: absolute; font-size: 2em; cursor: pointer; pointer-events: auto; }
-

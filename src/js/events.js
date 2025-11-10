@@ -1,4 +1,9 @@
-const Events = {
+import { Game } from './game.js';
+import { UI } from './ui.js';
+import { AudioManager } from './audio.js';
+import { Particles } from './particles.js';
+
+export const Events = {
   buyProducer(i){
     const p = Game.state.producers[i];
     const cost = Math.floor(p.baseCost * Math.pow(1.15,p.count));
@@ -25,9 +30,9 @@ const Events = {
   },
 
   clickMain(){
-    Game.state.stardust += Game.state.clickValue*Game.state.rebirthMultiplier;
+    Game.state.stardust += Game.state.clickValue * Game.state.rebirthMultiplier;
     AudioManager.play('click');
     UI.updateStardust();
-    Particles.spawn(UI.stardustDisplay,20,'#fff');
+    Particles.spawn(UI.stardustDisplay, 20, '#fff');
   }
-}
+};

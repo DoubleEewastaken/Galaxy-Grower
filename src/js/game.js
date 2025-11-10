@@ -1,5 +1,4 @@
-// ===== Game State =====
-const Game = {
+export const Game = {
   state: {
     stardust: 0,
     clickValue: 1,
@@ -17,11 +16,11 @@ const Game = {
   },
 
   save() { localStorage.setItem('cosmicClicker', JSON.stringify(this.state)); },
+
   load() {
     const saved = localStorage.getItem('cosmicClicker');
     if(saved) this.state = JSON.parse(saved);
   },
 
   format(n){ return n.toFixed(0); }
-}
-
+};

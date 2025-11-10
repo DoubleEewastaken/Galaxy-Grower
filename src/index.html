@@ -13,8 +13,8 @@
   <button id="clickButton">✨ Click ✨</button>
   <div id="producers"><h3>Producers</h3></div>
   <div id="upgrades"><h3>Upgrades</h3></div>
-  <button onclick="UI.openSettings()">⚙️ Settings</button>
-  <button onclick="UI.openRebirth()">🌌 Rebirth</button>
+  <button id="openSettingsBtn">⚙️ Settings</button>
+  <button id="openRebirthBtn">🌌 Rebirth</button>
 </div>
 
 <div id="settings">
@@ -23,26 +23,17 @@
   <label>Event Sound <input type="checkbox" id="eventSoundToggle" checked></label>
   <label>Purchase Sound <input type="checkbox" id="purchaseSoundToggle" checked></label>
   <label>Background Anim <input type="checkbox" id="bgToggle" checked></label>
-  <button onclick="Settings.resetGame()">Reset Save</button>
-  <div class="closeBtn" onclick="UI.closeSettings()">Close</div>
+  <button id="resetBtn">Reset Save</button>
+  <div class="closeBtn" id="closeSettingsBtn">Close</div>
 </div>
 
 <div id="rebirthModal">
   <h2>Rebirth</h2>
   <div id="rebirthInfo"></div>
-  <button onclick="Rebirth.confirmRebirth()">Confirm Rebirth</button>
-  <div class="closeBtn" onclick="UI.closeRebirth()">Close</div>
+  <button id="confirmRebirthBtn">Confirm Rebirth</button>
+  <div class="closeBtn" id="closeRebirthBtn">Close</div>
 </div>
 
-<script type="module"></script>
-<script src="js/audio.js"></script>
-<script src="js/particles.js"></script>
-<script src="js/game.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/events.js"></script>
-<script src="js/rebirth.js"></script>
-<script src="js/settings.js"></script>
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
-
