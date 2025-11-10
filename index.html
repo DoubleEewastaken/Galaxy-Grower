@@ -3,17 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Galaxy Grower</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Galaxy Grower 2.0</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>Galaxy Grower</h1>
-      <div class="meta">
-        <div>🌌 Stardust: <span id="stardust">0</span></div>
-        <div>✨ DPS: <span id="dps">0</span></div>
-        <div>🔁 Click Value: <span id="clickValue">1</span></div>
+      <h1>Galaxy Grower 2.0</h1>
+      <div id="hud-small">
+        <div>🌌 <span id="stardust">0</span></div>
+        <div>✨ DPS <span id="dps">0</span></div>
+        <div>🔁 Click <span id="clickValue">1</span></div>
+      </div>
+      <div id="top-actions">
+        <button id="adBtn">📺 Watch Ad (5%)</button>
+        <button id="rebirthBtn">♻️ Rebirth</button>
+        <button id="settingsBtn">⚙️</button>
       </div>
     </header>
 
@@ -21,26 +26,42 @@
       <section id="click-area">
         <button id="big-button" aria-label="Collect Stardust">✦</button>
         <div id="click-note">Tap the core</div>
+        <div id="floating-events"></div>
       </section>
 
       <aside id="shop">
-        <h2>Producers</h2>
+        <h2>Producers & Upgrades</h2>
         <div id="upgrades"></div>
 
-        <h2>Boosts & Actions</h2>
+        <h3>Boosts</h3>
         <div class="actions">
-          <button id="buyClickUpgrade">Buy Click + (cost <span id="clickCost">50</span>)</button>
+          <button id="buyClickUpgrade">Buy Click + (<span id="clickCost">50</span>)</button>
           <button id="saveBtn">Save</button>
           <button id="resetBtn">Reset</button>
         </div>
+
+        <h3>Rebirth & Perks</h3>
+        <div id="rebirthPanel"></div>
       </aside>
     </main>
 
     <footer>
-      Built for fun — save stored in browser (localStorage).
+      Auto-saves every 30s · click events are space-themed · rebirths grant Perk Points
     </footer>
   </div>
 
-  <script src="game.js"></script>
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-inner">
+      <h2>Settings</h2>
+      <label><input type="checkbox" id="toggleSound"> Enable Sound (future)</label>
+      <label><input type="checkbox" id="toggleStarfield" checked> Starfield Background</label>
+      <button id="closeSettings">Close</button>
+      <hr>
+      <button id="hardReset" style="background:#c33;color:white">Reset Save (hard)</button>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>
