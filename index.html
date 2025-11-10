@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galaxy Grower</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Galaxy Grower</h1>
+      <div class="meta">
+        <div>🌌 Stardust: <span id="stardust">0</span></div>
+        <div>✨ DPS: <span id="dps">0</span></div>
+        <div>🔁 Click Value: <span id="clickValue">1</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="click-area">
+        <button id="big-button" aria-label="Collect Stardust">✦</button>
+        <div id="click-note">Tap the core</div>
+      </section>
+
+      <aside id="shop">
+        <h2>Producers</h2>
+        <div id="upgrades"></div>
+
+        <h2>Boosts & Actions</h2>
+        <div class="actions">
+          <button id="buyClickUpgrade">Buy Click + (cost <span id="clickCost">50</span>)</button>
+          <button id="saveBtn">Save</button>
+          <button id="resetBtn">Reset</button>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Built for fun — save stored in browser (localStorage).
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
