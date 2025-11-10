@@ -1,12 +1,9 @@
-export const AudioManager = {
-  click: new Audio('https://freesound.org/data/previews/66/66717_931655-lq.mp3'),
-  event: new Audio('https://freesound.org/data/previews/320/320655_5260877-lq.mp3'),
-  purchase: new Audio('https://freesound.org/data/previews/33/33749_512123-lq.mp3'),
-
-  play(sound){
-    const setting = `${sound}Sound`;
-    if(Game.state.settings[setting]) this[sound].play();
-  }
-};
-
 import { Game } from './game.js';
+
+export const AudioManager={
+  click:new Audio('https://freesound.org/data/previews/66/66717_931655-lq.mp3'),
+  event:new Audio('https://freesound.org/data/previews/320/320655_5260877-lq.mp3'),
+  purchase:new Audio('https://freesound.org/data/previews/33/33749_512123-lq.mp3'),
+
+  play(type){ if(Game.state.settings[type+'Sound']) this[type].play(); }
+};

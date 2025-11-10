@@ -1,8 +1,6 @@
-body { margin: 0; font-family: sans-serif; background: #000; color: #fff; overflow: hidden; }
-#game { display: flex; flex-direction: column; align-items: center; padding: 20px; }
-#stardustDisplay { font-size: 2em; margin-bottom: 10px; }
-#clickButton { font-size: 1.5em; padding: 20px 40px; cursor: pointer; margin-bottom: 20px; background: #222; border: 2px solid #fff; border-radius: 10px; }
-#producers, #upgrades { margin: 10px 0; }
-.item { margin: 5px 0; }
-.particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; pointer-events: none; }
-.floatingEvent { position: absolute; font-size: 2em; cursor: pointer; pointer-events: auto; }
+body { margin:0; font-family:sans-serif; background:#000; color:#fff; overflow:hidden; }
+#game-container { display:flex; height:100vh; }
+#gameCanvas { flex:1; background:#000; display:block; }
+#ui-panel { width:300px; padding:10px; background:#111; display:flex; flex-direction:column; gap:10px; }
+.rectBtn { width:100%; padding:10px; margin:5px 0; cursor:pointer; background:#222; color:#fff; border:2px solid #fff; border-radius:5px; }
+.item { margin:5px 0; }

@@ -1,14 +1,13 @@
 import { Game } from './game.js';
 import { UI } from './ui.js';
 
-export const Rebirth = {
+export const Rebirth={
   confirmRebirth(){
     Game.state.cosmicEssence++;
-    Game.state.rebirthMultiplier = 1 + Game.state.cosmicEssence * 0.01;
-    Game.state.stardust = 0;
-    Game.state.producers.forEach(p => p.count = 0);
+    Game.state.stardust=0;
+    Game.state.producers.forEach(p=>p.count=0);
     UI.renderProducers();
     UI.updateStardust();
-    UI.closeRebirth();
+    document.getElementById('rebirthModal').style.display='none';
   }
 };

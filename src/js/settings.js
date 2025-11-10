@@ -1,14 +1,12 @@
 import { Game } from './game.js';
-import { UI } from './ui.js';
 
-export const Settings = {
+export const Settings={
   resetGame(){ localStorage.clear(); location.reload(); }
 };
 
-// Attach event listeners after DOM is ready
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.getElementById('clickSoundToggle').addEventListener('change', e=>{ Game.state.settings.clickSound = e.target.checked; });
-  document.getElementById('eventSoundToggle').addEventListener('change', e=>{ Game.state.settings.eventSound = e.target.checked; });
-  document.getElementById('purchaseSoundToggle').addEventListener('change', e=>{ Game.state.settings.purchaseSound = e.target.checked; });
-  document.getElementById('bgToggle').addEventListener('change', e=>{ Game.state.settings.bgAnim = e.target.checked; });
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('clickSoundToggle').addEventListener('change',e=>Game.state.settings.clickSound=e.target.checked);
+  document.getElementById('eventSoundToggle').addEventListener('change',e=>Game.state.settings.eventSound=e.target.checked);
+  document.getElementById('purchaseSoundToggle').addEventListener('change',e=>Game.state.settings.purchaseSound=e.target.checked);
+  document.getElementById('bgToggle').addEventListener('change',e=>Game.state.settings.bgAnim=e.target.checked);
 });
